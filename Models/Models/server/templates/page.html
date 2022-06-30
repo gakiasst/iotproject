@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<head>
+    <style>
+    table, th, td {
+            border: 1px solid silver;
+            border-collapse: collapse;}
+    .grey {
+            background-color: LightGray;}
+    .red {
+            background-color: rgba(255, 0, 0, .25);}
+    .lblue {
+            background-color: LightBlue;}
+    .blue {
+            background-color:rgb(106, 90, 205);}
+    .DarkGrey {
+            background-color:DarkGrey ;}
+    .white {
+            background-color:Snow;}
+    .container {
+        position: relative;
+        text-align: center;
+        color: #ad18a6;
+        font-family: Arial ;
+        font-size: 27px;
+    }  .balcony-road {
+        position: absolute;
+        bottom: 170px;
+        left: 212px;
+    }  .livingroom {
+        position: absolute;
+        top: 300px;
+        left: 410px;
+    }  .kitchen {
+        position: absolute;
+        top: 90px;
+        right: 410px;
+    }  .balcony-yard {
+        position: absolute;
+        bottom: 180px;
+        right: 218px;
+    }  .bathroom {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .bedroom {
+        position: absolute;
+        bottom: 47%;
+        right: 30%;
+    }
+    </style>
+    <link rel="stylesheet" href='/static/main.css' />
+</head>
+<title>Sensor Data</title>
+<body style = "background-color:Gray;">
+<h1 style="text-align:center;"><font face = "Arial"   > WEATHER FORECAT FROM RASPBERRY Pi</font></h1>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:25px;'><font face = "Arial"> <u> BEDROOM SENSOR</u></font> </b>  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b style='font-size:20px;'><font face = "Arial"> LAST UPDATE:  </font></b> <b style='font-size:20px;'> <font face = "Arial">{{roomdate}}</font> </b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px;color:#7fb8ec;'><font face = "Arial"> TEMPERATURE:</font> </b>
+&nbsp;&nbsp;&nbsp; <b style='font-size:20px;' > <font face = "Arial"> {{roomtemp}} </font> </b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px;color:#f19126;'> <font face = "Arial">HUMIDITY: </font>  </b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px;'> <font face = "Arial">{{roomhum}} </font> </b>
+<br> <br>
+
+<div class="container">
+    <img  style='text-align:center;' src="/static/house1.jpg"  width="1000" height="530" >
+    <!--<img src="img_snow_wide.jpg" alt="Snow" style="width:100%;"> -->
+    <div class="balcony-road"> 21°C / 60%</div>
+    <div class="livingroom">22°C / 57%</div>
+    <div class="kitchen">22°C / 50%</div>
+    <div class="balcony-yard">20°C / 53%</div>
+    <div class="bathroom">19°C / 55%</div>
+    <div  class="bedroom" >20°C / 52% </div>
+</div>
+
+<br> <br>
+
+&nbsp&nbsp&nbsp&nbsp  <img  src="data:image/png;base64, {{ plot_url }}">
+&nbsp&nbsp <img src="data:image1/png;base64, {{ plot_url1 }}">
+
+<br> <br>
+ <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+
+</body>
+</html>

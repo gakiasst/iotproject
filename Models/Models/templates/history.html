@@ -1,0 +1,149 @@
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+    <style>
+    table, th, td {
+            border: 20px solid #87adda;
+            border-collapse: collapse;}
+    .grey {
+            background-color: LightGray;}
+    .red {
+            background-color: rgba(255, 0, 0, .25);}
+    .lblue {
+            background-color: #bae4f1;}
+    .blue {
+            background-color:rgb(106, 90, 205);}
+    .DarkGrey {
+            background-color:DarkGrey ;}
+    .white {
+            background-color:Snow;}
+
+    </style>
+    <link rel="stylesheet" href='/static/main.css' />
+</head>
+<title> Historical Data</title>
+<body style = "background-color:#87adda;">
+<h1 style="text-align:center; font-size:45px; color:white;"><font face = "Arial"   > Home History <i class= "fa fa-home"  ></i></font></h1>
+<br> <br>
+<table style="width:100%" >
+        <tr>
+                <td>
+                        <img src="/static/15.jpg" align= "left" width="300" height="300" >
+                </td>
+                <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:25px;'><font face = "Arial"> <u> Bedroom Sensor</u></font> </b> <br> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b style='font-size:20px;'><font face = "Arial"> LAST UPDATE:  </font></b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style='font-size:20px;'> <font face = "Arial">{{htmldateroom}} ,{{htmltimeroom}}  </font> </b> <br> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px;color:#073562;'><font face = "Arial"> TEMPERATURE:</font> </b>
+                        &nbsp;&nbsp;&nbsp; <b style='font-size:20px;' > <font face = "Arial"> {{htmltemproom}} </font> </b> <br> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px;color:Red;'> <font face = "Arial">HUMIDITY: </font>  </b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px;'> <font face = "Arial">{{htmlhumroom}} </font> </b> <br>
+                        <br> <br><br> <br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:25px;'> <font face = "Arial"> <u> Balcony Yard Sensor</u>  </font> </b> <br> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px;'>  <font face = "Arial"> LAST UPDATE:</font> </b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style='font-size:20px;'> <font face = "Arial">{{htmldateout}}, {{htmltimeout}} </font> </b> <br> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px; color:#073562;'> <font face = "Arial">  TEMPERATURE: </font> </b>
+                        &nbsp;&nbsp;&nbsp;   <b style='font-size:20px;'> <font face = "Arial"> {{htmltempout}} </font> </b> <br> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px;color:Red;'><font face = "Arial">   HUMIDITY: </font> </b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='font-size:20px;'> <font face = "Arial">  {{htmlhumout}} </font> </b> <br>
+                </td>
+                <td>
+                        <img src="/static/conditions.png" align="right" width="300" height="300" >
+                </td>
+        <tr>
+</table>
+
+<br> <br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <img  src="data:image/png;base64, {{ plot_url }}">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="data:image1/png;base64, {{ plot_url1 }}">
+
+<br> <br>
+ <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+<h2 style='text-align:center;' > <font face = "Arial"> <u> HISTORICAL DATA</u>  </font></h2>
+ </p>
+
+<p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+<h2 style='text-align:center;' > <font face = "Arial">  ROOM SENSOR  </font></h2>
+
+ </p>
+<font face ="Arial">
+
+<table style="width:100%"  font face="Arial">
+        <colgroup>
+                <col class="white"  span="1"/>
+                <col class="lblue" span="3" />
+                <col class="grey " span="3"/>
+        </colgroup>
+        <thead>
+        <tr>
+                <th>DATE</th>
+                <th>AVRG TEMPERATURE</th>
+                <th>MAX TEMPERATURE</th>
+                <th>MIN TEMPERATURE</th>
+                <th>AVRG HUMIDITY</th>
+                <th>MAX HUMIDITY</th>
+                <th>MIN HUMIDITY</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for y in range(stsroomrows) %}
+        <tr>
+                <td>{{stsdatein[y]}}</td>
+                <td>{{stsavtempin[y]}}</td>
+                <td>{{stsmxtmpin[y]}}</td>
+                <td>{{stsmntmpin[y]}}</td>
+                <td>{{stsavhumin[y]}}</td>
+                <td>{{stsmxhin[y]}}</td>
+                <td>{{stsmnhin[y]}}</td>
+        </tr>
+        {% endfor %}
+  </tbody>
+</table>
+        <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+        <h2 style='text-align:center;' > <font face = "Arial">  EXTERNAL SENSOR  </font></h2>
+        </p>
+
+        <table style="width:100%"  font face="Arial">
+                <colgroup>
+                        <col class="white"  span="1"/>
+                        <col class="lblue" span="3" />
+                        <col class="grey" span="3"/>
+
+                </colgroup>
+        <tr>
+                <th> DATE </th>
+                <th>AVRG TEMPERATURE</th>
+                <th>MAX TEMPERATURE</th>
+                <th>MIN TEMPERATURE</th>
+                <th>AVRG HUMIDITY</th>
+                <th>MAX HUMIDITY</th>
+                <th>MIN HUMIDITY</th>
+        </tr>
+        {% for z in range(stsoutrows) %}
+        <tr>
+                <td>{{stsdateout[z]}}</td>
+                <td>{{stsavtempout[z]}}</td>
+                <td>{{stsmxtmpout[z]}}</td>
+                <td>{{stsmntmpout[z]}}</td>
+                <td>{{stsavhumout[z]}}</td>
+                <td>{{stsmxhout[z]}}</td>
+                <td>{{stsmnhout[z]}}</td>
+        </tr>
+        {% endfor %}
+
+
+</body>
+</html>
